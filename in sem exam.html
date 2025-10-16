@@ -1,0 +1,110 @@
+<!-- ...existing code... -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Student Info - Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      :root {
+        --card-bg: #1cf608;
+        --page-bg: #187ffc;
+        --border: #d22a2a;
+        --accent: #333;
+        --gap: 16px;
+        --pad: 24px;
+      }
+
+      html,body { height:100%; margin:0; font-family: Arial, Helvetica, sans-serif; background:var(--page-bg); }
+      .page { min-height:100%; display:flex; align-items:center; justify-content:center; padding:32px; box-sizing:border-box; }
+
+      .card {
+        background:var(--card-bg);
+        border:1px solid var(--border);
+        border-radius:8px;
+        padding:var(--pad);
+        max-width:800px;
+        width:100%;
+        box-shadow:0 2px 6px rgba(0,0,0,0.06);
+      }
+
+      /* Use dl for semantics, then arrange fields with flex */
+      .fields {
+        display:flex;
+        flex-direction:column;
+        gap:var(--gap);
+      }
+
+      .row {
+        display:flex;
+        align-items:flex-start;
+        gap:8px;
+      }
+
+      dt {
+        font-weight:600;
+        color:var(--accent);
+        min-width:80px;
+      }
+
+      dd {
+        margin:0;
+        font-size:16px;
+      }
+
+      /* On wider screens, lay out fields horizontally (row) */
+      @media (min-width: 769px) {
+        .fields {
+          flex-direction:row;
+          gap:24px;
+          align-items:center;
+        }
+        .row { align-items:center; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <article class="card" aria-label="Student information">
+        <dl class="fields" role="list">
+          <div class="row" role="listitem">
+            <dt>Name:</dt>
+            <dd id="name">V.Benari krishna</dd>
+          </div>
+
+          <div class="row" role="listitem">
+            <dt>ID:</dt>
+            <dd id="id">2400032047</dd>
+          </div>
+
+          <div class="row" role="listitem">
+            <dt>Course:</dt>
+            <dd id="course">Computer Science</dd>
+          </div>
+
+          <div class="row" role="listitem">
+            <dt>Year:</dt>
+            <dd id="year">3rd Year</dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+
+    <script>
+      // No external links used. If you want to populate dynamically, change the object below.
+      (function () {
+        const studentInfo = {
+          name: 'V.Benari krishna',
+          id: '2400032047',
+          course: 'Computer Science',
+          year:'3rd Year',
+        };
+
+        document.getElementById('name').textContent = studentInfo.name;
+        document.getElementById('id').textContent = studentInfo.id;
+        document.getElementById('course').textContent = studentInfo.course;
+        document.getElementById('year').textContent = studentInfo.year;
+      })();
+    </script>
+  </body>
+</html>
